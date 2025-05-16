@@ -4,13 +4,13 @@ import webpush from "web-push";
 
 webpush.setVapidDetails(
   "<mailto:your-email@example.com>",
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!
+  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
+  process.env.VAPID_PRIVATE_KEY
 );
 
 let subscription = null;
 
-export async function subscribeUser(sub: PushSubscription) {
+export async function subscribeUser(sub) {
   subscription = sub;
   // In a production environment, you would want to store the subscription in a database
   // For example: await db.subscriptions.create({ data: sub })
@@ -24,7 +24,7 @@ export async function unsubscribeUser() {
   return { success: true };
 }
 
-export async function sendNotification(message: string) {
+export async function sendNotification(message) {
   if (!subscription) {
     throw new Error("No subscription available");
   }

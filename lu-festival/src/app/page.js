@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { subscribeUser, unsubscribeUser, sendNotification } from "./actions";
 
 function urlBase64ToUint8Array(base64String) {
+  if (!base64String || typeof base64String !== "string") {
+    throw new Error("Invalid base64 string provided.");
+  }
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
 
@@ -18,8 +21,7 @@ function urlBase64ToUint8Array(base64String) {
 
 function PushNotificationManager() {
   const [isSupported, setIsSupported] = useState(false);
-  const [subscription, setSubscription] =
-    (useState < PushSubscription) | (null > null);
+  const [subscription, setSubscription] = useState(null);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -40,14 +42,20 @@ function PushNotificationManager() {
 
   async function subscribeToPush() {
     const registration = await navigator.serviceWorker.ready;
+    const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+    if (!vapidKey) {
+      alert(
+        "VAPID public key is not set. Please define NEXT_PUBLIC_VAPID_PUBLIC_KEY in your environment."
+      );
+      return;
+    }
     const sub = await registration.pushManager.subscribe({
       userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(
-        process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
-      ),
+      applicationServerKey: urlBase64ToUint8Array(vapidKey),
     });
     setSubscription(sub);
-    await subscribeUser(sub);
+    const serializedSub = JSON.parse(JSON.stringify(sub));
+    await subscribeUser(serializedSub);
   }
 
   async function unsubscribeFromPush() {
@@ -98,11 +106,12 @@ function InstallPrompt() {
 
   useEffect(() => {
     setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
+
     setIsStandalone(window.matchMedia("(display-mode: standalone)").matches);
   }, []);
 
   if (isStandalone) {
-    return null;
+    return null; // Don't show install button if already installed
   }
 
   return (
