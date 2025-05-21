@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { subscribeUser, unsubscribeUser, sendNotification } from "./actions";
+import Link from "next/link";
 
 function urlBase64ToUint8Array(base64String) {
   if (!base64String || typeof base64String !== "string") {
@@ -142,6 +143,7 @@ export default function Page() {
     <div>
       <PushNotificationManager />
       <InstallPrompt />
+      <Link href="/Home">Dashboard</Link>;
     </div>
   );
 }

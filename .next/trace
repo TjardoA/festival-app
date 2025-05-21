@@ -1,3 +1,47 @@
-[{"name":"next-dev","duration":1748693,"timestamp":859001195520,"id":1,"tags":{},"startTime":1747378169363,"traceId":"1f1c8dcd6e6b5abf"}]
-[{"name":"next-dev","duration":1716709,"timestamp":395702814,"id":1,"tags":{},"startTime":1747379043895,"traceId":"4632d0b9007a3f7a"}]
-[{"name":"next-dev","duration":1149550,"timestamp":2028253481,"id":1,"tags":{},"startTime":1747382078446,"traceId":"6108432ef2025a4c"}]
+[
+  {
+    "name": "next-dev",
+    "duration": 1748693,
+    "timestamp": 859001195520,
+    "id": 1,
+    "tags": {},
+    "startTime": 1747378169363,
+    "traceId": "1f1c8dcd6e6b5abf"
+  },
+  {
+    "name": "next-dev",
+    "duration": 1716709,
+    "timestamp": 395702814,
+    "id": 1,
+    "tags": {},
+    "startTime": 1747379043895,
+    "traceId": "4632d0b9007a3f7a"
+  },
+  {
+    "name": "next-dev",
+    "duration": 1149550,
+    "timestamp": 2028253481,
+    "id": 1,
+    "tags": {},
+    "startTime": 1747382078446,
+    "traceId": "6108432ef2025a4c"
+  },
+  {
+    "name": "next-dev",
+    "duration": 792156,
+    "timestamp": 5791620184,
+    "id": 1,
+    "tags": {},
+    "startTime": 1747385841812,
+    "traceId": "3b1eb6c63d0db8b1"
+  },
+  {
+    "name": "next-dev",
+    "duration": 733195,
+    "timestamp": 5830078147,
+    "id": 1,
+    "tags": {},
+    "startTime": 1747385880270,
+    "traceId": "3fc97ea5817adc51"
+  }
+]
