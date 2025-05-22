@@ -55,7 +55,7 @@ export default function Footer() {
               ? "size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
               : "bg-[#F03228] size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
           }`}
-          href="/map"
+          href="/Map"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

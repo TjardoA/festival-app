@@ -12,8 +12,8 @@ export default function Header() {
             <img
               src="/logo_lightmode.svg"
               alt="logo"
-              width="30px"
-              height="30px"
+              width="25px"
+              height="25px"
             ></img>
           </Link>
         </nav>
