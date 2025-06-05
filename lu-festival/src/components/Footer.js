@@ -1,94 +1,92 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ReactNode } from "react";
+
+const NavButton = ({ href, icon, isActive }) => {
+  const baseClasses =
+    "size-16 border-2 rounded-2xl flex justify-center items-center";
+  const activeClasses = "border-[#F03228]";
+  const inactiveClasses = "bg-[#F03228] border-[#F03228]";
+
+  return (
+    <Link
+      href={href}
+      className={`${baseClasses} ${isActive ? activeClasses : inactiveClasses}`}
+    >
+      {icon}
+    </Link>
+  );
+};
 
 export default function Footer() {
   const pathname = usePathname();
 
+  const iconColor = (path) => (pathname === path ? "#F03228" : "#FFFFFF");
+
   return (
-    <footer className="w-full h-1/8 flex justify-center items-center border-t-2">
-      <nav className="flex w-9/10 h-full justify-between items-center">
-        {/* home button */}
-        <Link
-          className={`${
-            pathname === "/home"
-              ? "size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
-              : "bg-[#F03228] size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
-          }`}
+    <footer className="w-full h-20 flex justify-center items-center dark:bg-black">
+      <nav className="flex w-[90%] h-full justify-between items-center">
+        <NavButton
           href="/Home"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="30px"
-            viewBox="0 -960 960 960"
-            width="36px"
-            fill={`${pathname === "/home" ? "#F03228" : "#FFFFFF"}`}
-          >
-            <path d="M226.67-186.67h140v-246.66h226.66v246.66h140v-380L480-756.67l-253.33 190v380ZM160-120v-480l320-240 320 240v480H526.67v-246.67h-93.34V-120H160Zm320-352Z" />
-          </svg>
-        </Link>
-
-        {/* info button */}
-        <Link
-          className={`${
-            pathname === "/info"
-              ? "size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
-              : "bg-[#F03228] size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
-          }`}
+          isActive={pathname === "/Home"}
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="30px"
+              viewBox="0 -960 960 960"
+              width="36px"
+              fill={iconColor("/Home")}
+            >
+              <path d="M226.67-186.67h140v-246.66h226.66v246.66h140v-380L480-756.67l-253.33 190v380ZM160-120v-480l320-240 320 240v480H526.67v-246.67h-93.34V-120H160Zm320-352Z" />
+            </svg>
+          }
+        />
+        <NavButton
           href="/Info"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="30px"
-            viewBox="0 -960 960 960"
-            width="36px"
-            fill={`${pathname === "/info" ? "#F03228" : "#FFFFFF"}`}
-          >
-            <path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
-          </svg>
-        </Link>
-
-        {/* map button */}
-        <Link
-          className={`${
-            pathname === "/map"
-              ? "size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
-              : "bg-[#F03228] size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
-          }`}
+          isActive={pathname === "/Info"}
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="30px"
+              viewBox="0 -960 960 960"
+              width="36px"
+              fill={iconColor("/Info")}
+            >
+              <path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+            </svg>
+          }
+        />
+        <NavButton
           href="/Map"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="30px"
-            viewBox="0 -960 960 960"
-            width="40px"
-            fill={`${pathname === "/map" ? "#F03228" : "#FFFFFF"}`}
-          >
-            <path d="m608-120-255.33-90-181.34 71.33q-18 8.67-34.66-2.16Q120-151.67 120-172v-558.67q0-13 7.5-23t19.83-15L352.67-840 608-750.67 788.67-822q18-8 34.66 2.5Q840-809 840-788.67v563.34q0 11.66-7.5 20.33-7.5 8.67-19.17 13L608-120Zm-36-82.67v-492.66L388-758v492.67l184 62.66Zm66.67 0 134.66-44.66v-499.34l-134.66 51.34v492.66Zm-452-11.33 134.66-51.33V-758l-134.66 44.67V-214Zm452-481.33v492.66-492.66ZM321.33-758v492.67V-758Z" />
-          </svg>
-        </Link>
-
-        {/* setlist button */}
-        <Link
-          className={`${
-            pathname === "/setlist"
-              ? "size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
-              : "bg-[#F03228] size-16 border-2 rounded-2xl border-[#F03228] flex justify-center items-center"
-          }`}
-          href="/setlist"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="30px"
-            viewBox="0 -960 960 960"
-            width="40px"
-            fill={`${pathname === "/setlist" ? "#F03228" : "#FFFFFF"}`}
-          >
-            <path d="M246.67-279.33h226.66V-346H246.67v66.67Zm120-167.34h226.66v-66.66H366.67v66.66Zm120-167.33h226.66v-66.67H486.67V-614Zm-300 494q-27 0-46.84-19.83Q120-159.67 120-186.67v-586.66q0-27 19.83-46.84Q159.67-840 186.67-840h586.66q27 0 46.84 19.83Q840-800.33 840-773.33v586.66q0 27-19.83 46.84Q800.33-120 773.33-120H186.67Zm0-66.67h586.66v-586.66H186.67v586.66Zm0-586.66v586.66-586.66Z" />
-          </svg>
-        </Link>
-
-        {/* weather button */}
+          isActive={pathname === "/Map"}
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="30px"
+              viewBox="0 -960 960 960"
+              width="40px"
+              fill={iconColor("/Map")}
+            >
+              <path d="m608-120-255.33-90-181.34 71.33q-18 8.67-34.66-2.16Q120-151.67 120-172v-558.67q0-13 7.5-23t19.83-15L352.67-840 608-750.67 788.67-822q18-8 34.66 2.5Q840-809 840-788.67v563.34q0 11.66-7.5 20.33-7.5 8.67-19.17 13L608-120Zm-36-82.67v-492.66L388-758v492.67l184 62.66Zm66.67 0 134.66-44.66v-499.34l-134.66 51.34v492.66Zm-452-11.33 134.66-51.33V-758l-134.66 44.67V-214Zm452-481.33v492.66-492.66ZM321.33-758v492.67V-758Z" />
+            </svg>
+          }
+        />
+        <NavButton
+          href="/Setlist"
+          isActive={pathname === "/Setlist"}
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="30px"
+              viewBox="0 -960 960 960"
+              width="40px"
+              fill={iconColor("/Setlist")}
+            >
+              <path d="M246.67-279.33h226.66V-346H246.67v66.67Zm120-167.34h226.66v-66.66H366.67v66.66Zm120-167.33h226.66v-66.67H486.67V-614Zm-300 494q-27 0-46.84-19.83Q120-159.67 120-186.67v-586.66q0-27 19.83-46.84Q159.67-840 186.67-840h586.66q27 0 46.84 19.83Q840-800.33 840-773.33v586.66q0 27-19.83 46.84Q800.33-120 773.33-120H186.67Zm0-66.67h586.66v-586.66H186.67v586.66Zm0-586.66v586.66-586.66Z" />
+            </svg>
+          }
+        />
       </nav>
     </footer>
   );

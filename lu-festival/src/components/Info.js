@@ -38,7 +38,7 @@ const sections = [
           Plan je trip via{" "}
           <a
             href="https://9292.nl"
-            className="text-blue-600 underline"
+            className="text-blue-600 underline dark:text-blue-400"
             target="_blank"
           >
             9292.nl
@@ -58,12 +58,10 @@ const sections = [
   {
     title: "Lockers",
     content: (
-      <>
-        <p>
-          Er zijn lockers aanwezig op het terrein (3 à 4 jassen). Je kunt ze de
-          hele dag gebruiken. Online reserveren is niet mogelijk.
-        </p>
-      </>
+      <p>
+        Er zijn lockers aanwezig op het terrein (3 à 4 jassen). Je kunt ze de
+        hele dag gebruiken. Online reserveren is niet mogelijk.
+      </p>
     ),
   },
   {
@@ -90,12 +88,10 @@ const sections = [
   {
     title: "Golden-GLU",
     content: (
-      <>
-        <p>
-          Studenten van het GLU met een gouden armbandje krijgen privileges:
-          gouden toiletten en priority service bij speciale barpunten.
-        </p>
-      </>
+      <p>
+        Studenten van het GLU met een gouden armbandje krijgen privileges:
+        gouden toiletten en priority service bij speciale barpunten.
+      </p>
     ),
   },
 ];
@@ -109,25 +105,32 @@ export default function InfoAccordion() {
 
   return (
     <div className="w-full max-w-2xl mx-auto p-4 space-y-4">
-      {sections.map((section, index) => (
-        <div key={index} className="border rounded-lg shadow-sm">
-          <button
-            onClick={() => toggle(index)}
-            className="w-full text-left px-4 py-3 bg-gray-100 hover:bg-gray-200 font-semibold transition-colors duration-300"
-          >
-            {section.title}
-          </button>
+      {sections.map((section, index) => {
+        const isOpen = openIndex === index;
+
+        return (
           <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${
-              openIndex === index
-                ? "max-h-[1000px] opacity-100"
-                : "max-h-0 opacity-0"
-            } px-4`}
+            key={index}
+            className="border rounded-lg shadow-md bg-white dark:bg-gray-800 dark:border-gray-700 transition-colors duration-300"
           >
-            <div className="py-3 text-sm text-gray-800">{section.content}</div>
+            <button
+              onClick={() => toggle(index)}
+              className="w-full text-left px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 font-semibold text-gray-800 dark:text-white transition-colors duration-300 rounded-t-lg"
+            >
+              {section.title}
+            </button>
+            <div
+              className={`overflow-hidden transition-all duration-500 ease-in-out px-4 ${
+                isOpen ? "max-h-[1000px] py-3" : "max-h-0 py-0"
+              }`}
+            >
+              <div className="text-sm text-gray-800 dark:text-gray-100">
+                {section.content}
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

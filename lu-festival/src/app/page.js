@@ -115,10 +115,36 @@ function InstallPrompt() {
     return null; // Don't show install button if already installed
   }
 
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    function handleBeforeInstallPrompt(e) {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    }
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    return () => {
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      setDeferredPrompt(null);
+    }
+  };
+
   return (
     <div>
       <h3>Install App</h3>
-      <button>Add to Home Screen</button>
+      {!isIOS && deferredPrompt && (
+        <button onClick={handleInstallClick}>Add to Home Screen</button>
+      )}
       {isIOS && (
         <p>
           To install this app on your iOS device, tap the share button
