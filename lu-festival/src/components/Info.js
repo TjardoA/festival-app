@@ -1,100 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const sections = [
-  {
-    title: "Algemeen & contact",
-    content: (
-      <>
-        <p>
-          Het ❤️U Festival is voor (nieuwe) studenten in de regio Utrecht en is
-          een aanvulling op UIT.
-        </p>
-        <h3 className="font-semibold mt-4">Adres</h3>
-        <p>Locatie: Strijkviertel, Utrecht</p>
-        <p>Navigatieadres: Strijkviertelweg, Utrecht</p>
-        <h3 className="font-semibold mt-4">Datum & Openingstijden</h3>
-        <p>Zaterdag 6 september 2025 - 12:00 tot 23:00 uur</p>
-      </>
-    ),
-  },
-  {
-    title: "Bereikbaarheid",
-    content: (
-      <>
-        <h3 className="font-semibold mt-2">Fiets</h3>
-        <p>
-          Er is een grote gratis fietsenstalling aanwezig waar je jouw fiets de
-          gehele dag kunt stallen.
-        </p>
-        <h3 className="font-semibold mt-2">Auto</h3>
-        <p>
-          Parkeren kan op P+R Papendorp, volg de borden 'P online ticket'. Geen
-          ticket? Koop er een bij de parkeerwachter (PIN ONLY). Let op: VOL=VOL.
-        </p>
-        <h3 className="font-semibold mt-2">OV</h3>
-        <p>
-          Plan je trip via{" "}
-          <a
-            href="https://9292.nl"
-            className="text-blue-600 underline dark:text-blue-400"
-            target="_blank"
-          >
-            9292.nl
-          </a>
-          .
-        </p>
-        <h3 className="font-semibold mt-2">Shuttlebus</h3>
-        <p>
-          Gratis shuttlebus vanaf Utrecht Centraal (Mineurslaan). Heen tussen
-          12:00 en 19:00, terug vanaf 21:00.
-        </p>
-        <h3 className="font-semibold mt-2">Taxi + Kiss & Ride</h3>
-        <p>Navigeer naar Strijkviertel, De Meern. Volg de borden.</p>
-      </>
-    ),
-  },
-  {
-    title: "Lockers",
-    content: (
-      <p>
-        Er zijn lockers aanwezig op het terrein (3 à 4 jassen). Je kunt ze de
-        hele dag gebruiken. Online reserveren is niet mogelijk.
-      </p>
-    ),
-  },
-  {
-    title: "FAQ",
-    content: (
-      <>
-        <h3 className="font-semibold mt-2">Ik gebruik medicatie. Wat nu?</h3>
-        <p>
-          Je mag medicatie meenemen met doktersverklaring. EHBO kan dit bewaren
-          indien nodig.
-        </p>
-        <h3 className="font-semibold mt-2">
-          Mag ik tussentijds het terrein verlaten?
-        </h3>
-        <p>
-          Nee, dat is niet toegestaan. Er zijn genoeg voorzieningen op het
-          terrein.
-        </p>
-        <h3 className="font-semibold mt-2">Zijn er lockers?</h3>
-        <p>Yes! Medium & grote lockers zijn beschikbaar op het terrein.</p>
-      </>
-    ),
-  },
-  {
-    title: "Golden-GLU",
-    content: (
-      <p>
-        Studenten van het GLU met een gouden armbandje krijgen privileges:
-        gouden toiletten en priority service bij speciale barpunten.
-      </p>
-    ),
-  },
-];
+import sections from "../data/info.json";
 
 export default function InfoAccordion() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -124,8 +31,30 @@ export default function InfoAccordion() {
                 isOpen ? "max-h-[1000px] py-3" : "max-h-0 py-0"
               }`}
             >
-              <div className="text-sm text-gray-800 dark:text-gray-100">
-                {section.content}
+              <div className="text-sm text-gray-800 dark:text-gray-100 space-y-2">
+                {section.content.map((paragraph, i) => (
+                  <p
+                    key={i}
+                    className={
+                      paragraph === paragraph.toUpperCase()
+                        ? "font-semibold mt-4"
+                        : ""
+                    }
+                  >
+                    {paragraph.includes("9292.nl") ? (
+                      <a
+                        href="https://9292.nl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline dark:text-blue-400"
+                      >
+                        {paragraph}
+                      </a>
+                    ) : (
+                      paragraph
+                    )}
+                  </p>
+                ))}
               </div>
             </div>
           </div>

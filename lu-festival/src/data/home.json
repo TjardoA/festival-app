@@ -1,0 +1,62 @@
+{
+  "news1": {
+    "title": {
+      "nl": "🎤 Eerste artiesten bekend!",
+      "en": "🎤 First artists announced!"
+    },
+    "description": {
+      "nl": "Goldband, S10 en Son Mieux zijn bevestigd. Meer artiesten worden binnenkort aangekondigd.",
+      "en": "Goldband, S10 and Son Mieux are confirmed. More artists will be announced soon."
+    }
+  },
+  "news2": {
+    "title": {
+      "nl": "🎟️ Tickets bijna uitverkocht",
+      "en": "🎟️ Tickets almost sold out"
+    },
+    "description": {
+      "nl": "Early Bird-tickets zijn op. Regular tickets gaan hard – bestel op tijd.",
+      "en": "Early Bird tickets are gone. Regular tickets are selling fast – order in time."
+    }
+  },
+  "news3": {
+    "title": {
+      "nl": "🚌 Shuttlebus update",
+      "en": "🚌 Shuttle bus update"
+    },
+    "description": {
+      "nl": "Extra pendelbussen vanaf Utrecht Centraal. Gratis voor alle bezoekers.",
+      "en": "Extra shuttle buses from Utrecht Central. Free for all visitors."
+    }
+  },
+  "news4": {
+    "title": {
+      "nl": "🎪 Meer area's dan ooit",
+      "en": "🎪 More areas than ever"
+    },
+    "description": {
+      "nl": "Dit jaar: Chill Garden, Silent Disco, en Creators' Market. Nieuw en verrassend!",
+      "en": "This year: Chill Garden, Silent Disco, and Creators' Market. New and surprising!"
+    }
+  },
+  "news5": {
+    "title": {
+      "nl": "🍔 Foodtruck line-up",
+      "en": "🍔 Food truck line-up"
+    },
+    "description": {
+      "nl": "Van vegan opties tot wereldkeuken – voor ieder wat wils, ook halal & glutenvrij.",
+      "en": "From vegan options to world cuisine – something for everyone, including halal & gluten-free."
+    }
+  },
+  "news6": {
+    "title": {
+      "nl": "🧾 Line-up schema binnenkort",
+      "en": "🧾 Line-up schedule coming soon"
+    },
+    "description": {
+      "nl": "Binnenkort publiceren we de timetable zodat je je festivaldag kunt plannen.",
+      "en": "We'll publish the timetable soon so you can plan your festival day."
+    }
+  }
+}
